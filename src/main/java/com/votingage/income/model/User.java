@@ -1,9 +1,7 @@
 package com.votingage.income.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.neovisionaries.i18n.CountryCode;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -34,19 +32,24 @@ public class User {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name = "second_name", nullable = false)
-    private String secondName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
     @Column(name = "age", nullable = false)
-    private int age;
+    private Integer age;
+
     @Column(name = "sex", nullable = false)
     @Enumerated(EnumType.STRING)
     private Sex sex;
+
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
+
     @Column(name = "country", nullable = false)
     private String country;
 
-    @ManyToMany
+    @OneToMany
     private List<VoteTable> votedTables;
 
 }

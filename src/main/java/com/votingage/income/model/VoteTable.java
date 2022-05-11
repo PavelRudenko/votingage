@@ -10,7 +10,6 @@ import org.hibernate.annotations.Parameter;
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,20 +32,24 @@ public class VoteTable {
 
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
+
     @Column(name = "title", nullable = false)
     private String title;
 
-    /*@Column(name = "choice", updatable = false, nullable = false)
-    @SuppressWarnings("JpaAttributeTypeInspection")
-    private Map<Boolean, String> choice;*/
+    @Column(name = "choice", updatable = false, nullable = false)
+    private Boolean choice;
+
+    @Column(name = "voting_title", updatable = false, nullable = false)
+    private String votingTitle;
 
     @Column(name = "timestamp", updatable = false, nullable = false)
     private LocalDateTime timestamp;
+
     @Column(name = "tablePrivacy", updatable = false, nullable = false)
     private Boolean tablePrivacy;
 
-    @ManyToMany
-     private List<User> votedUsers;
+    @ManyToOne
+    private User votedUsers;
 
 
 }
