@@ -22,7 +22,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDto> getCurrentUser (UserDto name){
+    public ResponseEntity<UserDto> getCurrentUser (String name){
         final UserDto userDtoResponse = userService.getUserByName(name);
         return new ResponseEntity<>(userDtoResponse,HttpStatus.OK);
     }

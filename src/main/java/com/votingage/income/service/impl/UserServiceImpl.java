@@ -13,14 +13,14 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService  {
+public class UserServiceImpl implements UserService {
 
     private final MapStructMapper mapStructMapper;
-
+    private final UserDao userDao;
 
     @Override
     public UserDto getUserByName(String name) {
-
+        return mapStructMapper.toUserDto(userDao.findByFirstName(name));
 
     }
 }
