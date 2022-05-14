@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -17,6 +18,11 @@ public class UserServiceImpl implements UserService {
 
     private final MapStructMapper mapStructMapper;
     private final UserDao userDao;
+
+    @Override
+    public List<UserDto> findAllUsers() {
+        return mapStructMapper.toAllUserDto(userDao.findAll());
+    }
 
     @Override
     public UserDto getUserByName(String name) {

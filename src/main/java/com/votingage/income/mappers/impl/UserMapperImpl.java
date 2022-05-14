@@ -7,6 +7,9 @@ import com.votingage.income.model.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class UserMapperImpl implements MapStructMapper {
 
@@ -22,5 +25,17 @@ public class UserMapperImpl implements MapStructMapper {
         return User.builder()
                 .firstName(userDto.getFirstName())
                 .build();
+    }
+
+    @Override
+    public List<UserDto> toAllUserDto(List<User> userList) {
+        if (userList.isEmpty()) {
+            return null; //TODO: fix it with logger!
+        }
+        List<UserDto> list = new ArrayList<>(userList.size());
+        for (User user : userList) {
+            list.add(toUserDto(user));
+        }
+        return list;
     }
 }

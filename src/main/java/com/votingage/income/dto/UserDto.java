@@ -3,17 +3,13 @@ package com.votingage.income.dto;
 import com.neovisionaries.i18n.CountryCode;
 import com.votingage.income.model.Sex;
 import com.votingage.income.model.VoteTable;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class UserDto {
 
     private String firstName;

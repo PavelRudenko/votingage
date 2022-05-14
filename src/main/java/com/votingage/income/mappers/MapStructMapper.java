@@ -7,12 +7,16 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 
 @Mapper(componentModel = "spring")
 public interface MapStructMapper {
-  //  MapStructMapper INSTANCE = Mappers.getMapper(MapStructMapper.class);
 
     UserDto toUserDto(User user);
-    User toUser (UserDto userDto);
+
+    User toUser(UserDto userDto);
+
+    List<UserDto> toAllUserDto(List<User> userList);
 
 }
